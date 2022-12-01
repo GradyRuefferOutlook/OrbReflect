@@ -1,0 +1,147 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="15.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProjectGuid>{E6BC81C1-1D31-47DA-A493-B165F09DBEB4}</ProjectGuid>
+    <OutputType>WinExe</OutputType>
+    <RootNamespace>OrbReflect</RootNamespace>
+    <AssemblyName>OrbReflect</AssemblyName>
+    <TargetFrameworkVersion>v4.7.2</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+    <AutoGenerateBindingRedirects>true</AutoGenerateBindingRedirects>
+    <Deterministic>true</Deterministic>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <PlatformTarget>AnyCPU</PlatformTarget>
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <PlatformTarget>AnyCPU</PlatformTarget>
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="System" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Deployment" />
+    <Reference Include="System.Drawing" />
+    <Reference Include="System.Net.Http" />
+    <Reference Include="System.Windows.Forms" />
+    <Reference Include="System.Xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="Form1.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Form1.Designer.cs">
+      <DependentUpon>Form1.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Program.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <EmbeddedResource Include="Form1.resx">
+      <DependentUpon>Form1.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Properties\Resources.resx">
+      <Generator>ResXFileCodeGenerator</Generator>
+      <LastGenOutput>Resources.Designer.cs</LastGenOutput>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <Compile Include="Properties\Resources.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DependentUpon>Resources.resx</DependentUpon>
+      <DesignTime>True</DesignTime>
+    </Compile>
+    <None Include="Properties\Settings.settings">
+      <Generator>SettingsSingleFileGenerator</Generator>
+      <LastGenOutput>Settings.Designer.cs</LastGenOutput>
+    </None>
+    <Compile Include="Properties\Settings.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DependentUpon>Settings.settings</DependentUpon>
+      <DesignTimeSharedInput>True</DesignTimeSharedInput>
+    </Compile>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="App.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\xJgMdipOpZDq3imQ_4eu9RHzN_o_s3jY8hPQH7dzxdcTi6roV-wWtEtW-2g-SOMgFqEv6UMd6Rv8RfF69qy9g0mqWndtKdRyptK1zw.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\4jycuE5T5oYQVMO3-coGX0aQ5JVcOLiELTdZB51oi2fNdkgIbUtg6PPMxE0sG5VtXoSHg2kqS2tDDfOKofTpLb83Ln4VekduHetf.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\RnukCau2UBz1iluNI09dQ8RpHNOBjqqBtWGMhKS-C3vuFpQpkE7dnMYkLl_p7CrlwOlbBf73kT3K8JIfaXyu654veroGyo9yaxYAqw.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\94EdkgtcwyEDOwh4-oMygKLPLpfNeat-LZLP58C-NVTR4_8TU7QjrMVB8gvUcyeN1q2pfypV7t-B0IRp75dQKVD9rsKkNg7C9aRT.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\2idJeeg82DdYVgjboW8F9gAalfay_pgBjv9CKIjBQocButmgk44XaZtKNeLpapE67H0U_adThyvtjUCYoHHyb15ZgdwgZpn_yvTaMTQ.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\66831.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\download.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\AdobeStock_437689083-e1641471938991.jpeg" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\keyboard_key_q.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\download_1.jpg" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\download-_1__1.jpg" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\download-_3_.jpg" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\download-_2_.jpg" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\pixel-art-golden-star-six-pointed-star-badge-icon-for-8bit-game-on-white-background-vector-removebg-preview.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\94-946258_pixel-fireball-pokemon-pixel-art-charmeleon-hd-png-removebg-preview.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\shadow_ball_8_by_venjix5_dd4gap7-fullview.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\unnamed %281%29.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\303j4jRiEtBUTyGSL5yYZdO2wWyE-6QRN4WojSiNlVo.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\TpO8H.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\ground-stone-texture-seamless-pattern-260nw-1161564847.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\gro.png" />
+  </ItemGroup>
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+</Project>

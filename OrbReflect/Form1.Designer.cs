@@ -29,7 +29,8 @@
         private void InitializeComponent()
         {
             this.components = new System.ComponentModel.Container();
-            this.timer1 = new System.Windows.Forms.Timer(this.components);
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(OrbReflect));
+            this.FrameTimer = new System.Windows.Forms.Timer(this.components);
             this.keyUDisplay = new System.Windows.Forms.PictureBox();
             this.p2SpellWindow = new System.Windows.Forms.PictureBox();
             this.p1Display = new System.Windows.Forms.PictureBox();
@@ -45,6 +46,11 @@
             this.p1SpellWindow = new System.Windows.Forms.PictureBox();
             this.ControlBackdrop = new System.Windows.Forms.Label();
             this.p2Display = new System.Windows.Forms.PictureBox();
+            this.ShadowBallDisplay = new System.Windows.Forms.PictureBox();
+            this.p2ScoreDisplay = new System.Windows.Forms.Label();
+            this.p1ScoreDisplay = new System.Windows.Forms.Label();
+            this.winLabel = new System.Windows.Forms.Label();
+            this.RestartTimer = new System.Windows.Forms.Timer(this.components);
             ((System.ComponentModel.ISupportInitialize)(this.keyUDisplay)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.p2SpellWindow)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.p1Display)).BeginInit();
@@ -59,11 +65,13 @@
             ((System.ComponentModel.ISupportInitialize)(this.keyQDisplay)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.p1SpellWindow)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.p2Display)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.ShadowBallDisplay)).BeginInit();
             this.SuspendLayout();
             // 
-            // timer1
+            // FrameTimer
             // 
-            this.timer1.Tick += new System.EventHandler(this.gameFrameTimer);
+            this.FrameTimer.Interval = 25;
+            this.FrameTimer.Tick += new System.EventHandler(this.gameFrameTimer);
             // 
             // keyUDisplay
             // 
@@ -220,6 +228,58 @@
             this.p2Display.TabIndex = 14;
             this.p2Display.TabStop = false;
             // 
+            // ShadowBallDisplay
+            // 
+            this.ShadowBallDisplay.BackColor = System.Drawing.Color.Transparent;
+            this.ShadowBallDisplay.BackgroundImage = global::OrbReflect.Properties.Resources.ShadowBallIcon;
+            this.ShadowBallDisplay.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
+            this.ShadowBallDisplay.Location = new System.Drawing.Point(544, 297);
+            this.ShadowBallDisplay.Name = "ShadowBallDisplay";
+            this.ShadowBallDisplay.Size = new System.Drawing.Size(65, 55);
+            this.ShadowBallDisplay.TabIndex = 15;
+            this.ShadowBallDisplay.TabStop = false;
+            // 
+            // p2ScoreDisplay
+            // 
+            this.p2ScoreDisplay.BackColor = System.Drawing.Color.Maroon;
+            this.p2ScoreDisplay.Font = new System.Drawing.Font("Impact", 16.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.p2ScoreDisplay.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
+            this.p2ScoreDisplay.Location = new System.Drawing.Point(667, 0);
+            this.p2ScoreDisplay.Name = "p2ScoreDisplay";
+            this.p2ScoreDisplay.Size = new System.Drawing.Size(267, 48);
+            this.p2ScoreDisplay.TabIndex = 16;
+            this.p2ScoreDisplay.Text = "0";
+            this.p2ScoreDisplay.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            // 
+            // p1ScoreDisplay
+            // 
+            this.p1ScoreDisplay.BackColor = System.Drawing.Color.DarkBlue;
+            this.p1ScoreDisplay.Font = new System.Drawing.Font("Impact", 16.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.p1ScoreDisplay.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
+            this.p1ScoreDisplay.Location = new System.Drawing.Point(667, 810);
+            this.p1ScoreDisplay.Name = "p1ScoreDisplay";
+            this.p1ScoreDisplay.Size = new System.Drawing.Size(267, 48);
+            this.p1ScoreDisplay.TabIndex = 17;
+            this.p1ScoreDisplay.Text = "0";
+            this.p1ScoreDisplay.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            // 
+            // winLabel
+            // 
+            this.winLabel.BackColor = System.Drawing.Color.Maroon;
+            this.winLabel.Font = new System.Drawing.Font("Magneto", 16.2F, ((System.Drawing.FontStyle)((System.Drawing.FontStyle.Bold | System.Drawing.FontStyle.Italic))), System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.winLabel.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
+            this.winLabel.Location = new System.Drawing.Point(196, 399);
+            this.winLabel.Name = "winLabel";
+            this.winLabel.Size = new System.Drawing.Size(738, 94);
+            this.winLabel.TabIndex = 18;
+            this.winLabel.Text = "Enigma";
+            this.winLabel.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            this.winLabel.Visible = false;
+            // 
+            // RestartTimer
+            // 
+            this.RestartTimer.Tick += new System.EventHandler(this.RestartTimer_Tick);
+            // 
             // OrbReflect
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
@@ -227,6 +287,9 @@
             this.BackColor = System.Drawing.SystemColors.ControlDark;
             this.BackgroundImage = global::OrbReflect.Properties.Resources.BattleTexture;
             this.ClientSize = new System.Drawing.Size(932, 853);
+            this.Controls.Add(this.winLabel);
+            this.Controls.Add(this.p1ScoreDisplay);
+            this.Controls.Add(this.p2ScoreDisplay);
             this.Controls.Add(this.p2Display);
             this.Controls.Add(this.keyFDisplay);
             this.Controls.Add(this.p1RightArrowDisplay);
@@ -242,7 +305,9 @@
             this.Controls.Add(this.p2SpellWindow);
             this.Controls.Add(this.p1Display);
             this.Controls.Add(this.ControlBackdrop);
+            this.Controls.Add(this.ShadowBallDisplay);
             this.DoubleBuffered = true;
+            this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.Name = "OrbReflect";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
@@ -264,13 +329,14 @@
             ((System.ComponentModel.ISupportInitialize)(this.keyQDisplay)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.p1SpellWindow)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.p2Display)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.ShadowBallDisplay)).EndInit();
             this.ResumeLayout(false);
 
         }
 
         #endregion
 
-        private System.Windows.Forms.Timer timer1;
+        private System.Windows.Forms.Timer FrameTimer;
         private System.Windows.Forms.PictureBox p1Display;
         private System.Windows.Forms.PictureBox p2SpellWindow;
         private System.Windows.Forms.PictureBox keyUDisplay;
@@ -286,6 +352,11 @@
         private System.Windows.Forms.PictureBox p1SpellWindow;
         private System.Windows.Forms.Label ControlBackdrop;
         private System.Windows.Forms.PictureBox p2Display;
+        private System.Windows.Forms.PictureBox ShadowBallDisplay;
+        private System.Windows.Forms.Label p2ScoreDisplay;
+        private System.Windows.Forms.Label p1ScoreDisplay;
+        private System.Windows.Forms.Label winLabel;
+        private System.Windows.Forms.Timer RestartTimer;
     }
 }
 

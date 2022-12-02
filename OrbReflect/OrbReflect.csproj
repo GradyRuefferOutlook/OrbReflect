@@ -143,5 +143,38 @@
   <ItemGroup>
     <None Include="Resources\gro.png" />
   </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Dapino-Magic-People-Magic-ball.ico" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\459694__matrixxx__key.wav" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\341813__ianstargem__chiptune-snare-1.wav" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\341814__ianstargem__chiptune-kick-1.wav" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\432287__ari-glitch__magic-circle-short-ringing-sfx.wav" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\441415__matrixxx__cheerful.wav" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\13098__looppool__16-virus-kit-d-2.wav" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\446136__justinvoke__jump-bounce.wav" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\446100__justinvoke__bounce.wav" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\523088__magnuswaker__energy-bounce-1.wav" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\659751__silverillusionist__victory-fanfare-rpg-or-high-fantasy.wav" />
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

@@ -15,6 +15,17 @@ using System.Windows.Forms;
  * 01/12/22
 */
 
+/* Controlls 
+ * w,s  i,k for forward and back
+ * a,d  j,l for turning
+ * caps  h for running
+ * enter to restart at end
+ * Soon to be added:
+ * q,e  u,o for spell scrolling
+ * f  semicolon to fire spell
+*/
+
+
 /* List of Incomplete and thus cut for the original hand-in
  * (If Acceptable, I will resubmit with finished fun components later)
  * (This may be because they still need to be coded, Such as a cpu, Or because they need tweaking (I.E Spellcasting))

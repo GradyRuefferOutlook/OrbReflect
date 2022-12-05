@@ -81,6 +81,8 @@ namespace OrbReflect
         //Track player speed
         int p1Speed = 0;
         int p2Speed = 0;
+        int p1StoredSpeed = 0;
+        int p2StoredSpeed = 0;
 
         int[] playerXSpeeds = { 0, 1, 2, 3, 4, 5, 4, 3, 2, 1, 0, -1, -2, -3, -4, -5, -4, -3, -2, -1 };
         int[] playerYSpeeds = { -5, -4, -3, -2, -1, 0, 1, 2, 3, 4, 5, 4, 3, 2, 1, 0, -1, -2, -3, -4 };
@@ -99,9 +101,16 @@ namespace OrbReflect
         Rectangle p1StartPosition = new Rectangle(400, 595, 55, 65);
         Rectangle p2StartPosition = new Rectangle(400, 35, 55, 65);
 
+        Image p1LeftLoad = Properties.Resources.Player1Left;
+        Image p1RightLoad = Properties.Resources.Player1Right;
+        Image p2LeftLoad = Properties.Resources.Player2Left;
+        Image p2RightLoad = Properties.Resources.Player2Right;
+
         //Track The Ball
         Rectangle Ball = new Rectangle(395, 320, 55, 55);
         Rectangle ballStartPosition = new Rectangle(395, 320, 55, 55);
+
+        Image ballLoad = Properties.Resources.ShadowBallIcon;
 
         //Track Ball Speeds
         int ballSpeedX = 0;
@@ -120,10 +129,6 @@ namespace OrbReflect
         Rectangle wallTopRight = new Rectangle(500, 38, 180, 5);
         Rectangle wallBottomLeft = new Rectangle(143, 643, 180, 5);
         Rectangle wallBottomRight = new Rectangle(500, 643, 180, 5);
-        //Rectangle wallTopLeft = new Rectangle(270, 38, 55, 5);
-        //Rectangle wallTopRight = new Rectangle(500, 38, 55, 5);
-        //Rectangle wallBottomLeft = new Rectangle(270, 643, 55, 5);
-        //Rectangle wallBottomRight = new Rectangle(500, 643, 55, 5);
         Rectangle arcTopLeft = new Rectangle(143, 38, 125, 125);
         Rectangle arcTopRight = new Rectangle(558, 38, 125, 125);
         Rectangle arcBottomLeft = new Rectangle(143, 523, 125, 125);
@@ -132,6 +137,16 @@ namespace OrbReflect
         //Middle of the Map
         Rectangle middleLine = new Rectangle(143, 342, 535, 5);
 
+        //Drawing Tools
+        Pen outlinePen = new Pen(Color.DarkGray, 5);
+        Pen middlePen = new Pen(Color.Purple, 5);
+        SolidBrush middleBrush = new SolidBrush(Color.Purple);
+        SolidBrush outlineBrush = new SolidBrush(Color.DarkGray);
+        SolidBrush blueBrush = new SolidBrush(Color.Blue);
+        SolidBrush accentBlueBrush = new SolidBrush(Color.Navy);
+        SolidBrush redBrush = new SolidBrush(Color.Red);
+        SolidBrush accentRedBrush = new SolidBrush(Color.IndianRed);
+
         //Setup Sounds
         SoundPlayer playerBounce = new SoundPlayer(Properties.Resources.MageBallBounce);
         SoundPlayer wallBounce1 = new SoundPlayer(Properties.Resources.WallBounce1);
@@ -139,7 +154,6 @@ namespace OrbReflect
         SoundPlayer wallBounce3 = new SoundPlayer(Properties.Resources.WallBounce3);
         SoundPlayer wallBounce4 = new SoundPlayer(Properties.Resources.WallBounce4);
         SoundPlayer fanfare = new SoundPlayer(Properties.Resources.victoryFanfare);
-
         public OrbReflect()
         {
             InitializeComponent();
@@ -268,62 +282,53 @@ namespace OrbReflect
 
         private void OrbReflect_Paint(object sender, PaintEventArgs e)
         {
-            Pen outlinePen = new Pen(Color.DarkGray, 5);
-            Pen middlePen = new Pen(Color.Purple, 5);
-            SolidBrush middleBrush = new SolidBrush(Color.Purple);
-            SolidBrush outlineBrush = new SolidBrush(Color.DarkGray);
-            SolidBrush blueBrush = new SolidBrush(Color.Blue);
-            SolidBrush accentBlueBrush = new SolidBrush(Color.Navy);
-            SolidBrush redBrush = new SolidBrush(Color.Red);
-            SolidBrush accentRedBrush = new SolidBrush(Color.IndianRed);
+                //Draw Arena Paintings
+                //Carpet Walkway
+                Rectangle RedCarpet = new Rectangle(325, 3, 175, 340);
+                e.Graphics.FillRectangle(accentRedBrush, RedCarpet);
+                Rectangle BlueCarpet = new Rectangle(325, 344, 175, 340);
+                e.Graphics.FillRectangle(accentBlueBrush, BlueCarpet);
 
-            //Draw Arena Paintings
-            //Carpet Walkway
-            Rectangle RedCarpet = new Rectangle(325, 3, 175, 340);
-            e.Graphics.FillRectangle(accentRedBrush, RedCarpet);
-            Rectangle BlueCarpet = new Rectangle(325, 344, 175, 340);
-            e.Graphics.FillRectangle(accentBlueBrush, BlueCarpet);
+                //Circles
+                Rectangle redCircleLeft = new Rectangle(170, 135, 120, 120);
+                e.Graphics.FillPie(redBrush, redCircleLeft, 0, 360);
+                Rectangle redCircleRight = new Rectangle(535, 135, 120, 120);
+                e.Graphics.FillPie(redBrush, redCircleRight, 0, 360);
+                Rectangle blueCircleLeft = new Rectangle(170, 465, 120, 120);
+                e.Graphics.FillPie(blueBrush, blueCircleLeft, 0, 360);
+                Rectangle blueCircleRight = new Rectangle(535, 465, 120, 120);
+                e.Graphics.FillPie(blueBrush, blueCircleRight, 0, 360);
+                Rectangle smallRedCircleLeft = new Rectangle(203, 168, 55, 55);
+                e.Graphics.FillPie(accentRedBrush, smallRedCircleLeft, 0, 360);
+                Rectangle smallRedCircleRight = new Rectangle(568, 168, 55, 55);
+                e.Graphics.FillPie(accentRedBrush, smallRedCircleRight, 0, 360);
+                Rectangle smallBlueCircleLeft = new Rectangle(203, 498, 55, 55);
+                e.Graphics.FillPie(accentBlueBrush, smallBlueCircleLeft, 0, 360);
+                Rectangle smallBlueCircleRight = new Rectangle(568, 498, 55, 55);
+                e.Graphics.FillPie(accentBlueBrush, smallBlueCircleRight, 0, 360);
 
-            //Circles
-            Rectangle redCircleLeft = new Rectangle(170, 135, 120, 120);
-            e.Graphics.FillPie(redBrush, redCircleLeft, 0, 360);
-            Rectangle redCircleRight = new Rectangle(535, 135, 120, 120);
-            e.Graphics.FillPie(redBrush, redCircleRight, 0, 360);
-            Rectangle blueCircleLeft = new Rectangle(170, 465, 120, 120);
-            e.Graphics.FillPie(blueBrush, blueCircleLeft, 0, 360);
-            Rectangle blueCircleRight = new Rectangle(535, 465, 120, 120);
-            e.Graphics.FillPie(blueBrush, blueCircleRight, 0, 360);
-            Rectangle smallRedCircleLeft = new Rectangle(203, 168, 55, 55);
-            e.Graphics.FillPie(accentRedBrush, smallRedCircleLeft, 0, 360);
-            Rectangle smallRedCircleRight = new Rectangle(568, 168, 55, 55);
-            e.Graphics.FillPie(accentRedBrush, smallRedCircleRight, 0, 360);
-            Rectangle smallBlueCircleLeft = new Rectangle(203, 498, 55, 55);
-            e.Graphics.FillPie(accentBlueBrush, smallBlueCircleLeft, 0, 360);
-            Rectangle smallBlueCircleRight = new Rectangle(568, 498, 55, 55);
-            e.Graphics.FillPie(accentBlueBrush, smallBlueCircleRight, 0, 360);
-
-            //Halfway Line
-            e.Graphics.FillRectangle(middleBrush, middleLine);
-            e.Graphics.DrawArc(middlePen, 335, 265, 155, 155, 0, 360);
+                //Halfway Line
+                e.Graphics.FillRectangle(middleBrush, middleLine);
+                e.Graphics.DrawArc(middlePen, 335, 265, 155, 155, 0, 360);
 
 
-            //Draw Walls
-            e.Graphics.FillRectangle(outlineBrush, wallLeft);
-            e.Graphics.FillRectangle(outlineBrush, wallRight);
-            e.Graphics.FillRectangle(outlineBrush, wallTopLeft);
-            e.Graphics.FillRectangle(outlineBrush, wallTopRight);
-            e.Graphics.FillRectangle(outlineBrush, wallBottomLeft);
-            e.Graphics.FillRectangle(outlineBrush, wallBottomRight);
+                //Draw Walls
+                e.Graphics.FillRectangle(outlineBrush, wallLeft);
+                e.Graphics.FillRectangle(outlineBrush, wallRight);
+                e.Graphics.FillRectangle(outlineBrush, wallTopLeft);
+                e.Graphics.FillRectangle(outlineBrush, wallTopRight);
+                e.Graphics.FillRectangle(outlineBrush, wallBottomLeft);
+                e.Graphics.FillRectangle(outlineBrush, wallBottomRight);
 
-            //Arc Drawn For arcTopRight, arcTopLeft, arcBottomRight, arcBottomLeft
-            e.Graphics.DrawArc(outlinePen, 145, 395, 250, 250, 180, -90);
-            e.Graphics.DrawArc(outlinePen, 430, 395, 250, 250, 90, -90);
-            e.Graphics.DrawArc(outlinePen, 145, 40, 250, 250, 180, 90);
-            e.Graphics.DrawArc(outlinePen, 430, 40, 250, 250, 270, 90);
+                //Arc Drawn For arcTopRight, arcTopLeft, arcBottomRight, arcBottomLeft
+                e.Graphics.DrawArc(outlinePen, 145, 395, 250, 250, 180, -90);
+                e.Graphics.DrawArc(outlinePen, 430, 395, 250, 250, 90, -90);
+                e.Graphics.DrawArc(outlinePen, 145, 40, 250, 250, 180, 90);
+                e.Graphics.DrawArc(outlinePen, 430, 40, 250, 250, 270, 90);
 
-            //Arc drawn for goals
-            e.Graphics.DrawArc(outlinePen, 325, 603, 175, 80, 0, 180);
-            e.Graphics.DrawArc(outlinePen, 325, 3, 175, 80, 180, 180);
+                //Arc drawn for goals
+                e.Graphics.DrawArc(outlinePen, 325, 603, 175, 80, 0, 180);
+                e.Graphics.DrawArc(outlinePen, 325, 3, 175, 80, 180, 180);
 
             //Set Wizard Positions
             p1Display.Location = new Point(p1.X - 10, p1.Y - 5);
@@ -444,11 +449,11 @@ namespace OrbReflect
                 //Set Wizard Orientation p1
                 if (p1Speed > 9)
                 {
-                    p1Display.BackgroundImage = Properties.Resources.Player1Left;
+                    p1Display.BackgroundImage = p1LeftLoad;
                 }
                 else
                 {
-                    p1Display.BackgroundImage = Properties.Resources.Player1Right;
+                    p1Display.BackgroundImage = p1RightLoad;
                 }
             }
             else
@@ -568,11 +573,11 @@ namespace OrbReflect
                 //Set Wizard Orientation p2
                 if (p2Speed > 9)
                 {
-                    p2Display.BackgroundImage = Properties.Resources.Player2Left;
+                    p2Display.BackgroundImage = p2LeftLoad;
                 }
                 else
                 {
-                    p2Display.BackgroundImage = Properties.Resources.Player2Right;
+                    p2Display.BackgroundImage = p2RightLoad;
                 }
             }
             else
@@ -660,7 +665,7 @@ namespace OrbReflect
                 ballSpeedY += playerYSpeeds[p1Speed] * 3;
                 if (capsDown == true)
                 {
-                    ballSpeedX = Convert.ToInt16 (ballSpeedX * 1.5);
+                    ballSpeedX = Convert.ToInt16(ballSpeedX * 1.5);
                     ballSpeedY = Convert.ToInt16(ballSpeedY * 1.5);
                 }
                 p1IsKnockback = 0;
@@ -735,11 +740,11 @@ namespace OrbReflect
             //Check The Mages Are Still In the Playing Field
             //Boundaries can be broken "magically", due to high speed knockback
             //Will Be Patched
-            if (p2.X < 0 || p2.X > 700 || p2.Y < 0 || p2.Y > 355)
+            if (p2.X < 125 || p2.X > 700 || p2.Y < 0 || p2.Y > 355)
             {
                 p2.Location = p2StartPosition.Location;
             }
-            if (p1.X < 0 || p1.X > 700 || p1.Y < 330 || p1.Y > 725)
+            if (p1.X < 125 || p1.X > 700 || p1.Y < 330 || p1.Y > 725)
             {
                 p1.Location = p1StartPosition.Location;
             }
